@@ -1,5 +1,6 @@
 const express = require('express');
 const { getAllProduct, createProduct, getSingleProduct, deleteProduct, updateProductData } = require('../controllers/productController');
+const shopImgMulter = require('../middlewares/shopImageMulter');
 
 //init router
 const router = express.Router();

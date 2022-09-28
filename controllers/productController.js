@@ -26,16 +26,18 @@ const getAllProduct = (req,res)=>{
     const product = JSON.parse(readFileSync(path.join(__dirname,'../db/product.json')));
 
     // get data form body
-    const {name,slug,regular_price,sale_price,stock,short_desc,long_desc,category,tag} = req.body;
+    const {name,slug,regular_price,sale_price,stock,short_desc,long_desc,category,tag,feature_img,gallery_img} = req.body;
 
-    if(!name || !slug || !regular_price || !sale_price || !stock || !short_desc || !long_desc || !category || !tag){
+    if(!name || !slug || !regular_price || !sale_price || !stock || !short_desc || !long_desc || !category || !tag || !feature_img || !gallery_img){
         res.status(400).send('All fields are required!')
     }
     else{
         //data push
         product.push({
             id : Math.floor(Math.random() * 10000000000).toString(),
-            name,slug,regular_price,sale_price,stock,short_desc,long_desc,category,tag
+            name,slug,regular_price,sale_price,stock,short_desc,long_desc,category,tag,
+            feature_img : feature_img,
+            gallery_img : gallery_img
         });
 
     // data push json db
